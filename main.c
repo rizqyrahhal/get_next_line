@@ -11,8 +11,14 @@
 #include <string.h>
 
 # ifndef BUFFER_SIZE
-# define BUFFER_SIZE 100
+# define BUFFER_SIZE 1
 # endif
+
+void checkLeaks(void)
+{
+	system("leaks a.out");
+	// system("leaks teat_fg");
+}
 
 char *get_line(char *str)
 {
@@ -22,13 +28,13 @@ char *get_line(char *str)
 	i = 0;
 	if (!str[i])
 		return (NULL);
-	while (str[i] && str[i] !='\n')
+	while (str[i] && str[i] !='\n' && i < BUFFER_SIZE)
 		i++;
 	line = (char *)malloc(sizeof(char) * (i + 2));
 	if (!line)
 		return (NULL);
 	i = 0;
-	while (str[i] && str[i] != '\n')
+	while (str[i] && str[i] != '\n' && i < BUFFER_SIZE)
 	{
 		line[i] = str[i];
 		i++;
@@ -43,10 +49,19 @@ char *get_line(char *str)
 }
 char *My_get_next_line(int fd)
 {
-	static char *buf;
+	// static char	*save;
+	char *buf;
 	char *line;
 	int rd_bytes;
 
+	// if (fd < 0)
+	// 	return (NULL);
+	// while ((rd_bytes = read(fd, buf, BUFFER_SIZE)) > 0)
+	// {
+	// 	buf[rd_bytes] = '\0';
+	// 	if (save == NULL)
+	// 		save = ft
+	// }
 	buf = malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!buf)
 		return (NULL);
@@ -63,16 +78,23 @@ char *My_get_next_line(int fd)
 	}
 	line = get_line(buf);
 	free(buf);
+	free(line);
 	return (line);
 }
 
 int	main()
 {
-	char *line;
-	int fd = open("Myfile.txt", O_RDONLY);
+	// char *line;
+	// int fd = open("Myfile.txt", O_RDONLY);
+	int fd = open("get_next_line.h", O_RDONLY);
 
-	line = My_get_next_line(fd);
-	printf("LINE: %s", line);
+
+	printf("LINE: %s", My_get_next_line(fd));
+	// line = My_get_next_line(fd);
+	// printf("LINE: %s", line);
+	// free(line);
+
+	atexit(checkLeaks);
 	return (0);
 }
 
