@@ -1,4 +1,5 @@
 #include "get_next_line.h"
+#include <stdio.h>
 #include <sys/types.h>
 #include <stdarg.h>
 #include <stddef.h>
@@ -10,16 +11,16 @@
 #include <errno.h>
 #include <string.h>
 
-# ifndef BUFFER_SIZE
-# define BUFFER_SIZE 1
-# endif
+// # ifndef BUFFER_SIZE
+// # define BUFFER_SIZE 1
+// # endif
 
-void checkLeaks(void)
-{
-	system("leaks a.out");
-	// system("leaks teat_fg");
-}
-
+// void checkLeaks(void)
+// {
+// 	system("leaks a.out");
+// 	// system("leaks teat_fg");
+// }
+/*
 char *get_line(char *str)
 {
 	char *line;
@@ -80,21 +81,34 @@ char *My_get_next_line(int fd)
 	free(buf);
 	free(line);
 	return (line);
-}
+}*/
 
 int	main()
 {
-	// char *line;
+	char *line;
+	char *line1;
+	char *line2;
 	// int fd = open("Myfile.txt", O_RDONLY);
-	int fd = open("get_next_line.h", O_RDONLY);
+	int fd = open("Myfile.txt", O_RDONLY);
 
+	line = get_next_line(fd);
+	line1 = get_next_line(fd);
+	line2 = get_next_line(fd);
 
-	printf("LINE: %s", My_get_next_line(fd));
+	printf("%s\n", line);
+	printf("%s\n", line1);
+	printf("%s\n", line2);
+
+	// printf("LINE: %s", get_next_line(fd));
+	// printf("LINE: %s", get_next_line(fd));
+	// printf("LINE: %s", get_next_line(fd));
+	// printf("LINE: %s", get_next_line(fd));
+	
 	// line = My_get_next_line(fd);
 	// printf("LINE: %s", line);
 	// free(line);
 
-	atexit(checkLeaks);
+	// atexit(checkLeaks);
 	return (0);
 }
 
