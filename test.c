@@ -47,3 +47,5 @@ int	main()
 	// atexit(checkLeaks);
 	return (0);
 }
+
+// https://linoxide.com/install-debian-11-on-virtualbox/
