@@ -20,7 +20,7 @@
 // 	system("leaks a.out");
 // 	// system("leaks teat_fg");
 // }
-/*
+
 char *get_line(char *str)
 {
 	char *line;
@@ -29,7 +29,7 @@ char *get_line(char *str)
 	i = 0;
 	if (!str[i])
 		return (NULL);
-	while (str[i] && str[i] !='\n' && i < BUFFER_SIZE)
+	while (str[i] && str[i] != '\n' && i < BUFFER_SIZE)
 		i++;
 	line = (char *)malloc(sizeof(char) * (i + 2));
 	if (!line)
@@ -48,6 +48,7 @@ char *get_line(char *str)
 	line[i] = '\0';
 	return (line);
 }
+
 char *My_get_next_line(int fd)
 {
 	// static char	*save;
@@ -81,7 +82,7 @@ char *My_get_next_line(int fd)
 	free(buf);
 	free(line);
 	return (line);
-}*/
+}
 
 int	main()
 {
@@ -91,18 +92,18 @@ int	main()
 	// int fd = open("Myfile.txt", O_RDONLY);
 	int fd = open("Myfile.txt", O_RDONLY);
 
-	line = get_next_line(fd);
-	line1 = get_next_line(fd);
-	line2 = get_next_line(fd);
+	line = My_get_next_line(fd);
+	line1 = My_get_next_line(fd);
+	line2 = My_get_next_line(fd);
 
 	printf("%s\n", line);
 	printf("%s\n", line1);
 	printf("%s\n", line2);
 
-	// printf("LINE: %s", get_next_line(fd));
-	// printf("LINE: %s", get_next_line(fd));
-	// printf("LINE: %s", get_next_line(fd));
-	// printf("LINE: %s", get_next_line(fd));
+	// printf("LINE: %s", My_get_next_line(fd));
+	// printf("LINE: %s", My_get_next_line(fd));
+	// printf("LINE: %s", My_get_next_line(fd));
+	// printf("LINE: %s", My_get_next_line(fd));
 	
 	// line = My_get_next_line(fd);
 	// printf("LINE: %s", line);

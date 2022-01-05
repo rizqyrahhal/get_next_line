@@ -49,4 +49,4 @@ int	main()
 }
 
 // https://linoxide.com/install-debian-11-on-virtualbox/
-https://velog.io/@yamkim/42-Seoul-Get-Next-Line2-Overview
+// https://velog.io/@yamkim/42-Seoul-Get-Next-Line2-Overview
