@@ -21,6 +21,27 @@
 // 	// system("leaks teat_fg");
 // }
 
+char	*get_one_line(int fd)
+{
+	static char	buf[BUFFER_SIZE + 1];
+	int		nbr_read;
+	int		i;
+	char	*end;
+	char	*line;
+
+	nbr_read = read(fd, buf, BUFFER_SIZE);
+	if (nbr_read <= 0)
+		return (NULL);
+	end = strchr(buf, '\n');
+	line = calloc(end - buf + 1, sizeof(char));
+	if (!line)
+		return (NULL);
+	i = -1;
+	while (++i < end - buf)
+		line[i] = buf[i];
+	return (line);
+}
+
 char *get_line(char *str)
 {
 	char *line;
@@ -78,8 +99,9 @@ char *My_get_next_line(int fd)
 		}
 		buf[rd_bytes] = '\0';
 	}
+	// line = get_one_line(fd);
 	line = get_line(buf);
-	free(buf);
+	// free(buf);
 	free(line);
 	return (line);
 }

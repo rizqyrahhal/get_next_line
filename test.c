@@ -47,6 +47,6 @@ int	main()
 	// atexit(checkLeaks);
 	return (0);
 }
-
+// cc -Wall -Wextra -Werror test.c get_next_line.c get_next_line.h get_next_line_utils.c -D BUFFER_SIZE=10 && ./a.out
 // https://linoxide.com/install-debian-11-on-virtualbox/
 // https://velog.io/@yamkim/42-Seoul-Get-Next-Line2-Overview
