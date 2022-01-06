@@ -21,24 +21,24 @@ int	main()
 	// char *line;
 	// char *line1;
 	// char *line2;
-	// int fd = open("Myfile.txt", O_RDONLY);
-	int fd = open("get_next_line.h", O_RDONLY);
+	int fd = open("Myfile.txt", O_RDONLY);
+	// int fd = open("get_next_line.h", O_RDONLY);
 
 	// line = get_next_line(fd);
 	// line1 = get_next_line(fd);
 	// line2 = get_next_line(fd);
 	
-	printf("%s\n", get_next_line(fd));
-	printf("%s\n", get_next_line(fd));
-	printf("%s\n", get_next_line(fd));
-	printf("%s\n", get_next_line(fd));
-	printf("%s\n", get_next_line(fd));
-	printf("%s\n", get_next_line(fd));
-	printf("%s\n", get_next_line(fd));
-	printf("%s\n", get_next_line(fd));
-	printf("%s\n", get_next_line(fd));
-	printf("%s\n", get_next_line(fd));
-	printf("%s\n", get_next_line(fd));
+	printf("%s", get_next_line(fd));
+	printf("%s", get_next_line(fd));
+	printf("%s", get_next_line(fd));
+	printf("%s", get_next_line(fd));
+	// printf("%s", get_next_line(fd));
+	// printf("%s\n", get_next_line(fd));
+	// printf("%s\n", get_next_line(fd));
+	// printf("%s\n", get_next_line(fd));
+	// printf("%s\n", get_next_line(fd));
+	// printf("%s\n", get_next_line(fd));
+	// printf("%s\n", get_next_line(fd));
 
 	// printf("%s\n", line);
 	// printf("%s\n", line1);
