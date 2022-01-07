@@ -78,7 +78,6 @@ char	*ft_strchr(const char *s, int c)
 	return (NULL);
 }
 
-/*
 void	ft_bzero(void	*s, size_t	n)
 {
 	unsigned char	*str;
@@ -109,6 +108,7 @@ void	*ft_calloc(size_t count, size_t size)
 	ft_bzero(p, count * size);
 	return (p);
 }
+/*
 
 char	*read_file(int fd)
 {
@@ -143,32 +143,65 @@ char	*read_file(int fd)
 	return (res);
 }*/
 
-char	*read_all(int	fd)
+char	*read_all(int fd, char *save)
 {
 	char	*buf;
-	char	*save = NULL;
 	int		nbr_read;
 
+	buf = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
 	nbr_read = 1;
-	buf = malloc(sizeof(char) * BUFFER_SIZE + 1);
-	while (fd > 0 && nbr_read >= 0)
+	while (nbr_read > 0)
 	{
+		// while not eof read
 		nbr_read = read(fd, buf, BUFFER_SIZE);
-		if (nbr_read < 0)
+		if (nbr_read == -1)
+		{
+			free(buf);
 			return (NULL);
-		save = ft_strjoin(save, buf);
-		if (ft_strchr(save, '\n'))
-			break;
-		free(buf);
+		}
+		// 0 to end for leak
+		buf[nbr_read] = 0;
+		// join and free
+		save = ft_free(save, buf);
+		// quit if \n find
+		if (ft_strchr(buf, '\n'))
+			break ;
 	}
+	free(buf);
 	return (save);
+	// buf = malloc(sizeof(char) * BUFFER_SIZE + 1);
+	// while (fd > 0 && nbr_read >= 0)
+	// {
+	// 	nbr_read = read(fd, buf, BUFFER_SIZE);
+	// 	if (nbr_read <= 0)
+	// 		return (NULL);
+	// 	save = ft_strjoin(save, buf);
+	// 	// if (ft_strchr(buf, '\n'))
+	// 	// 	break;
+	// 	free(buf);
+	// }
+	// return (buf);
+}
+
+char	*get_next_line(int fd)
+{
+	static char	*buffer;
+	// char		*line;
+
+	// error handling
+	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
+		return (NULL);
+	buffer = read_all(fd, buffer);
+	if (!buffer)
+		return (NULL);
+	return (buffer);
 }
 
 int	main()
 {
 	// int fd = open("get_next_line.h", O_RDONLY);
 	int fd = open("Myfile.txt", O_RDONLY);
-	printf("READ_ALL :: %s", read_all(fd));
+	printf("READ_ALL :: %s", get_next_line(fd));
 	// printf("READ_ALL :: %s", read_file(fd));
 	// printf("READ_ALL :: %s", read_file(fd));
 
