@@ -6,18 +6,12 @@
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 20:17:00 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/01/03 16:07:58 by rarahhal         ###   ########.fr       */
+/*   Updated: 2022/02/02 12:36:08 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "get_next_line.h"
-
-// char *get_next_line(int fd)
-// {
-	
-// }
-
 #include "get_next_line.h"
+#include <stdio.h>
 
 // join and free
 char	*ft_free(char *buffer, char *buf)
