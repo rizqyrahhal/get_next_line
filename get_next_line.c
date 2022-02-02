@@ -6,13 +6,13 @@
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 16:40:12 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/02/02 17:23:06 by rarahhal         ###   ########.fr       */
+/*   Updated: 2022/02/02 19:49:25 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_free(char *buffer, char *buf)
+char	*free_and_join(char *buffer, char *buf)
 {
 	char	*temp;
 
@@ -86,7 +86,7 @@ char	*read_file(int fd, char *save)
 			return (NULL);
 		}
 		buffer[byt_read] = 0;
-		save = ft_free(save, buffer);
+		save = free_and_join(save, buffer);
 		if (ft_strchr(buffer, '\n'))
 			break ;
 	}
