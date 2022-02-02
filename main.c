@@ -2,11 +2,15 @@
 
 int	main()
 {
-	// int fd = open("get_next_line.h", O_RDONLY);
-	int fd = open("Myfile.txt", O_RDONLY);
+	int fd = open("get_next_line.h", O_RDONLY);
+	// int fd = open("Myfile.txt", O_RDONLY);
 	printf("%s", get_next_line(fd));
 	printf("%s", get_next_line(fd));
-	// printf("%s", get_next_line(fd));
+	printf("%s", get_next_line(fd));
+	printf("%s", get_next_line(fd));
+	printf("%s", get_next_line(fd));
+	
+	printf("%s", get_next_line(fd));
 	close(fd);
 	return (0);
 }
