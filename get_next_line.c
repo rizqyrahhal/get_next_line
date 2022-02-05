@@ -6,7 +6,7 @@
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 16:40:12 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/02/05 15:06:10 by rarahhal         ###   ########.fr       */
+/*   Updated: 2022/02/05 17:29:56 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ char	*move_line(char *buffer)
 	int		j;
 
 	i = 0;
-	// if (!buffer[i])
-	// 	return (NULL);
 	while (buffer[i] && buffer[i] != '\n')
 		i++;
 	if (!buffer[i])
@@ -38,7 +36,6 @@ char	*move_line(char *buffer)
 		return (NULL);
 	}
 	line = ft_calloc((ft_strlen(buffer) - i + 1), sizeof(char));
-	// line = malloc((ft_strlen(buffer) - i + 1) * sizeof(char));
 	i++;
 	j = 0;
 	while (buffer[i])
@@ -58,7 +55,6 @@ char	*get_line(char *buffer)
 	while (buffer[i] && buffer[i] != '\n')
 		i++;
 	line = ft_calloc(i + 2, sizeof(char));
-	// line = malloc(i + 2 * sizeof(char));
 	i = 0;
 	while (buffer[i] && buffer[i] != '\n')
 	{
@@ -78,7 +74,6 @@ char	*read_file(int fd, char *save)
 	if (!save)
 		save = ft_calloc(1, 1);
 	buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
-	// buffer = malloc(BUFFER_SIZE + 1 * sizeof(char)); leaks 
 	byt_read = 1;
 	while (byt_read > 0)
 	{
