@@ -6,7 +6,7 @@
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 16:40:12 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/02/02 19:49:25 by rarahhal         ###   ########.fr       */
+/*   Updated: 2022/02/05 15:06:10 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,32 @@ char	*free_and_join(char *buffer, char *buf)
 	return (temp);
 }
 
+char	*move_line(char *buffer)
+{
+	char	*line;
+	int		i;
+	int		j;
+
+	i = 0;
+	// if (!buffer[i])
+	// 	return (NULL);
+	while (buffer[i] && buffer[i] != '\n')
+		i++;
+	if (!buffer[i])
+	{
+		free(buffer);
+		return (NULL);
+	}
+	line = ft_calloc((ft_strlen(buffer) - i + 1), sizeof(char));
+	// line = malloc((ft_strlen(buffer) - i + 1) * sizeof(char));
+	i++;
+	j = 0;
+	while (buffer[i])
+		line[j++] = buffer[i++];
+	free(buffer);
+	return (line);
+}
+
 char	*get_line(char *buffer)
 {
 	char	*line;
@@ -32,6 +58,7 @@ char	*get_line(char *buffer)
 	while (buffer[i] && buffer[i] != '\n')
 		i++;
 	line = ft_calloc(i + 2, sizeof(char));
+	// line = malloc(i + 2 * sizeof(char));
 	i = 0;
 	while (buffer[i] && buffer[i] != '\n')
 	{
@@ -43,31 +70,6 @@ char	*get_line(char *buffer)
 	return (line);
 }
 
-char	*move_line(char *buffer)
-{
-	char	*line;
-	int		i;
-	int		j;
-
-	i = 0;
-	if (!buffer[i])
-		return (NULL);
-	while (buffer[i] && buffer[i] != '\n')
-		i++;
-	if (!buffer[i])
-	{
-		free(buffer);
-		return (NULL);
-	}
-	line = ft_calloc((ft_strlen(buffer) - i + 1), sizeof(char));
-	i++;
-	j = 0;
-	while (buffer[i])
-		line[j++] = buffer[i++];
-	free(buffer);
-	return (line);
-}
-
 char	*read_file(int fd, char *save)
 {
 	char	*buffer;
@@ -76,6 +78,7 @@ char	*read_file(int fd, char *save)
 	if (!save)
 		save = ft_calloc(1, 1);
 	buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
+	// buffer = malloc(BUFFER_SIZE + 1 * sizeof(char)); leaks 
 	byt_read = 1;
 	while (byt_read > 0)
 	{

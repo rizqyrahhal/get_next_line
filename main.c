@@ -1,5 +1,11 @@
 #include "get_next_line.h"
 
+void checkLeaks(void)
+{
+	system("leaks a.out");
+	// system("leaks teat_fg");
+}
+// void check_leaks();
 int	main()
 {
 	int fd = open("get_next_line.h", O_RDONLY);
@@ -12,6 +18,9 @@ int	main()
 	
 	printf("%s", get_next_line(fd));
 	close(fd);
+
+	atexit(checkLeaks);
+	// check_leaks();
 	return (0);
 }
 
