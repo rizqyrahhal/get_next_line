@@ -6,16 +6,12 @@
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 20:17:14 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/02/05 18:31:57 by rarahhal         ###   ########.fr       */
+/*   Updated: 2022/02/05 20:19:11 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
-
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 119
-# endif
 
 # include <stdlib.h>
 # include <sys/types.h>
