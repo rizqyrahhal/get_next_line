@@ -1,0 +1,97 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/05 18:29:52 by rarahhal          #+#    #+#             */
+/*   Updated: 2022/02/05 18:34:19 by rarahhal         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "get_next_line_bonus.h"
+
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	int		i;
+	int		j;
+	int		k;
+	int		lentgh;
+	char	*newstring;
+
+	i = -1;
+	j = -1;
+	k = 0;
+	lentgh = ft_strlen(s1) + ft_strlen(s2);
+	newstring = (char *)malloc(sizeof(char) * (lentgh + 1));
+	if (!newstring)
+		return (NULL);
+	while (s1[++i])
+	{
+		newstring[k] = s1[i];
+		k++;
+	}
+	while (s2[++j])
+	{
+		newstring[k] = s2[j];
+		k++;
+	}	
+	newstring[k] = 0;
+	return (newstring);
+}
+
+size_t	ft_strlen(const char *s)
+{
+	size_t	i;
+
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
+}
+
+void	*ft_calloc(size_t count, size_t size)
+{
+	void	*p;
+
+	p = malloc(count * size);
+	if (!p)
+		return (NULL);
+	ft_bzero(p, count * size);
+	return (p);
+}
+
+void	ft_bzero(void	*s, size_t	n)
+{
+	unsigned char	*str;
+	size_t			i;
+
+	if (n != 0)
+	{
+		i = 0;
+		str = s;
+		while (i < n)
+		{
+			str[i] = 0;
+			i++;
+		}
+	}
+	return ;
+}
+
+char	*ft_strchr(const char *s, int c)
+{	
+	int	i;
+
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] == (char)c)
+			return ((char *)(s + i));
+		i++;
+	}
+	if (s[i] == (char)c)
+		return ((char *)(s + i));
+	return (NULL);
+}

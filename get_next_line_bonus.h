@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/16 20:17:14 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/02/05 18:31:57 by rarahhal         ###   ########.fr       */
+/*   Created: 2022/02/05 18:31:14 by rarahhal          #+#    #+#             */
+/*   Updated: 2022/02/05 18:49:13 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 119
+#  define BUFFER_SIZE 10000
 # endif
 
+# include <limits.h>
 # include <stdlib.h>
 # include <sys/types.h>
 # include <sys/uio.h>
