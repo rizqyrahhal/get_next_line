@@ -6,24 +6,24 @@
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 16:40:12 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/02/09 13:39:30 by rarahhal         ###   ########.fr       */
+/*   Updated: 2022/02/09 14:47:32 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*join_and_free(char *buffer, char *buf)
+char	*join_and_free(char *save, char *buffer)
 {
 	char	*temp;
 
-	temp = ft_strjoin(buffer, buf);
-	free(buffer);
+	temp = ft_strjoin(save, buffer);
+	free(save);
 	return (temp);
 }
 
-char	*move_line(char *stock)
+char	*move_to_rest(char *stock)
 {
-	char	*line;
+	char	*rest;
 	int		i;
 	int		j;
 
@@ -35,13 +35,13 @@ char	*move_line(char *stock)
 		free(stock);
 		return (NULL);
 	}
-	line = ft_calloc((ft_strlen(stock) - i + 1), sizeof(char));
+	rest = ft_calloc((ft_strlen(stock) - i + 1), sizeof(char));
 	i++;
 	j = 0;
 	while (stock[i])
-		line[j++] = stock[i++];
+		rest[j++] = stock[i++];
 	free(stock);
-	return (line);
+	return (rest);
 }
 
 char	*get_line(char *stock)
@@ -97,12 +97,12 @@ char	*get_next_line(int fd)
 	static char	*stock;
 	char		*line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	stock = read_file(fd, stock);
 	if (!stock)
 		return (NULL);
 	line = get_line(stock);
-	stock = move_line(stock);
+	stock = move_to_rest(stock);
 	return (line);
 }

@@ -11,13 +11,33 @@ void checkLeaks(void)
 int	main()
 {
 	int fd = open("get_next_line.h", O_RDONLY);
-	char *line;
-	// int fd1 = open("Myfile.txt", O_RDONLY);
-	// int fd2 = open("get_next_line.c", O_RDONLY);
-	line = get_next_line(fd);
-	printf("%s", line);
-	free(line);
-	// 
+	char *line1;
+	char *line2;
+	char *line3;
+	char *line4;
+	char *line5;
+
+
+	int fd1 = open("Myfile.txt", O_RDONLY);
+	int fd2 = open("get_next_line.c", O_RDONLY);
+	line1 = get_next_line(fd);
+	line2 = get_next_line(fd1);
+	line3 = get_next_line(fd2);
+	line4 = get_next_line(fd);
+	line5 = get_next_line(fd1);
+
+	printf("%s", line1);
+	printf("%s", line2);
+	printf("%s", line3);
+	printf("%s", line4);
+	printf("%s", line5);
+
+	free(line1);
+	free(line2);
+	free(line3);
+	free(line4);
+	free(line5);
+
 
 	// printf("%s", get_next_line(fd2));
 	

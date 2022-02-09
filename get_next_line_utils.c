@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   My_get_next_line_utils.c                           :+:      :+:    :+:   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 15:07:30 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/02/02 15:09:55 by rarahhal         ###   ########.fr       */
+/*   Updated: 2022/02/09 14:49:32 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	{
 		newstring[k] = s2[j];
 		k++;
-	}	
+	}
 	newstring[k] = 0;
 	return (newstring);
 }
