@@ -6,12 +6,16 @@
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 18:31:14 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/02/05 20:19:29 by rarahhal         ###   ########.fr       */
+/*   Updated: 2022/02/09 11:49:32 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_BONUS_H
 # define GET_NEXT_LINE_BONUS_H
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1000
+# endif
 
 # include <limits.h>
 # include <stdlib.h>

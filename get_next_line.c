@@ -6,13 +6,13 @@
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 16:40:12 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/02/05 17:29:56 by rarahhal         ###   ########.fr       */
+/*   Updated: 2022/02/09 13:39:30 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*free_and_join(char *buffer, char *buf)
+char	*join_and_free(char *buffer, char *buf)
 {
 	char	*temp;
 
@@ -21,47 +21,47 @@ char	*free_and_join(char *buffer, char *buf)
 	return (temp);
 }
 
-char	*move_line(char *buffer)
+char	*move_line(char *stock)
 {
 	char	*line;
 	int		i;
 	int		j;
 
 	i = 0;
-	while (buffer[i] && buffer[i] != '\n')
+	while (stock[i] && stock[i] != '\n')
 		i++;
-	if (!buffer[i])
+	if (!stock[i])
 	{
-		free(buffer);
+		free(stock);
 		return (NULL);
 	}
-	line = ft_calloc((ft_strlen(buffer) - i + 1), sizeof(char));
+	line = ft_calloc((ft_strlen(stock) - i + 1), sizeof(char));
 	i++;
 	j = 0;
-	while (buffer[i])
-		line[j++] = buffer[i++];
-	free(buffer);
+	while (stock[i])
+		line[j++] = stock[i++];
+	free(stock);
 	return (line);
 }
 
-char	*get_line(char *buffer)
+char	*get_line(char *stock)
 {
 	char	*line;
 	int		i;
 
 	i = 0;
-	if (!buffer[i])
+	if (!stock[i])
 		return (NULL);
-	while (buffer[i] && buffer[i] != '\n')
+	while (stock[i] && stock[i] != '\n')
 		i++;
 	line = ft_calloc(i + 2, sizeof(char));
 	i = 0;
-	while (buffer[i] && buffer[i] != '\n')
+	while (stock[i] && stock[i] != '\n')
 	{
-		line[i] = buffer[i];
+		line[i] = stock[i];
 		i++;
 	}
-	if (buffer[i] && buffer[i] == '\n')
+	if (stock[i] && stock[i] == '\n')
 		line[i] = '\n';
 	return (line);
 }
@@ -84,7 +84,7 @@ char	*read_file(int fd, char *save)
 			return (NULL);
 		}
 		buffer[byt_read] = 0;
-		save = free_and_join(save, buffer);
+		save = join_and_free(save, buffer);
 		if (ft_strchr(buffer, '\n'))
 			break ;
 	}
@@ -94,15 +94,15 @@ char	*read_file(int fd, char *save)
 
 char	*get_next_line(int fd)
 {
-	static char	*buffer;
+	static char	*stock;
 	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
 		return (NULL);
-	buffer = read_file(fd, buffer);
-	if (!buffer)
+	stock = read_file(fd, stock);
+	if (!stock)
 		return (NULL);
-	line = get_line(buffer);
-	buffer = move_line(buffer);
+	line = get_line(stock);
+	stock = move_line(stock);
 	return (line);
 }
