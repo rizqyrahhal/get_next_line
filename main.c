@@ -78,6 +78,6 @@ If defined, the unvarying maximum number of files that a single process can have
 
 
 
-// cc -Wall -Wextra -Werror main.c get_next_line.c get_next_line.h get_next_line_utils.c -D BUFFER_SIZE=10 && ./a.out
+// cc -Wall -Wextra -Werror main.c get_next_line_bonus.c get_next_line_bonus.h get_next_line_utils_bonus.c -D BUFFER_SIZE=10 && ./a.out
 // https://linoxide.com/install-debian-11-on-virtualbox/
 // https://velog.io/@yamkim/42-Seoul-Get-Next-Line2-Overview
