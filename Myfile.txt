@@ -1,4 +1,0 @@
-hello world!
-2eme line test from function read()
-3eme line test from function read()
-4em line test from function read()
